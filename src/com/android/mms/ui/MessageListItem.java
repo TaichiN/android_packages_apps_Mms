@@ -25,6 +25,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -75,6 +76,7 @@ import com.android.mms.transaction.TransactionBundle;
 import com.android.mms.transaction.TransactionService;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.SmileyParser;
+import com.android.mms.util.EmojiParser;
 import com.google.android.mms.ContentType;
 import com.google.android.mms.pdu.PduHeaders;
 
@@ -366,14 +368,25 @@ public class MessageListItem extends LinearLayout implements
                                        String subject, String timestamp, Pattern highlight,
                                        String contentType) {
         CharSequence template = mContext.getResources().getText(R.string.name_colon);
+        SmileyParser parser = SmileyParser.getInstance();
         SpannableStringBuilder buf =
             new SpannableStringBuilder(TextUtils.replace(template,
                 new String[] { "%s" },
                 new CharSequence[] { contact }));
 
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(mContext);
+        boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
+
         boolean hasSubject = !TextUtils.isEmpty(subject);
         if (hasSubject) {
-            buf.append(mContext.getResources().getString(R.string.inline_subject, subject));
+            CharSequence smilizedSubject = parser.addSmileySpans(subject);
+            if (enableEmojis) {
+                EmojiParser emojiParser = EmojiParser.getInstance();
+                smilizedSubject = emojiParser.addEmojiSpans(smilizedSubject);
+            }
+            buf.append(TextUtils.replace(mContext.getResources().getString(R.string.inline_subject),
+               new String[] { "%s" }, new CharSequence[] { smilizedSubject }));
         }
 
         if (!TextUtils.isEmpty(body)) {
@@ -385,8 +398,12 @@ public class MessageListItem extends LinearLayout implements
                 if (hasSubject) {
                     buf.append(" - ");
                 }
-                SmileyParser parser = SmileyParser.getInstance();
-                buf.append(parser.addSmileySpans(body));
+                CharSequence smileyBody = parser.addSmileySpans(body);
+                if (enableEmojis) {
+                    EmojiParser emojiParser = EmojiParser.getInstance();
+                    smileyBody = emojiParser.addEmojiSpans(smileyBody);
+                }
+                buf.append(smileyBody);
             }
         }
         // If we're in the process of sending a message (i.e. pending), then we show a "Sending..."
