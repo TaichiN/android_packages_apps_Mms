@@ -17,30 +17,34 @@
  -->
 <resources>
     <!-- NOTE: if you change anything about this array, you must make the corresponding change
-         to the array DEFAULT_SMILEY_RES_IDS in MessageListItem.java and to default_smiley_names
+         to the array DEFAULT_SMILEY_RES_IDS in SmileyParser.java and to default_smiley_names
          below. -->
     <string-array name="default_smiley_texts">
-      <item>:-)</item>   <!-- 0: Happy -->
-      <item>:-(</item>   <!-- 1: Sad -->
-      <item>;-)</item>   <!-- 2: Winking -->
-      <item>:-P</item>   <!-- 3: Tongue sticking out -->
-      <item>=-O</item>   <!-- 4: Surprised -->
-      <item>:-*</item>   <!-- 5: Kissing -->
-      <item>:O</item>    <!-- 6: Yelling -->
-      <item>B-)</item>   <!-- 7: Cool -->
-      <item>:-$</item>   <!-- 8: Money mouth -->
-      <item>:-!</item>   <!-- 9: Foot in mouth -->
-      <item>:-[</item>   <!-- 10: Embarrassed -->
-      <item>O:-)</item>  <!-- 11: Angel -->
-      <item>:-\\</item>  <!-- 12: Undecided -->
-      <item>:\'(</item>  <!-- 13: Crying -->
-      <item>:-X</item>   <!-- 14: Lips are sealed -->
-      <item>:-D</item>   <!-- 15: Laughing -->
-      <item>o_O</item>   <!-- 16: Confused -->
+        <item>:-)</item>   <!-- 0: Happy -->
+        <item>:-(</item>   <!-- 1: Sad -->
+        <item>;-)</item>   <!-- 2: Winking -->
+        <item>:-P</item>   <!-- 3: Tongue sticking out -->
+        <item>=-O</item>   <!-- 4: Surprised -->
+        <item>:-*</item>   <!-- 5: Kissing -->
+        <item>:O</item>    <!-- 6: Yelling -->
+        <item>B-)</item>   <!-- 7: Cool -->
+        <item>:-$</item>   <!-- 8: Money mouth -->
+        <item>:-!</item>   <!-- 9: Foot in mouth -->
+        <item>:-[</item>   <!-- 10: Embarrassed -->
+        <item>O:-)</item>  <!-- 11: Angel -->
+        <item>:-\\</item>  <!-- 12: Undecided -->
+        <item>:\'(</item>  <!-- 13: Crying -->
+        <item>:-X</item>   <!-- 14: Lips are sealed -->
+        <item>:-D</item>   <!-- 15: Laughing -->
+        <item>o_O</item>   <!-- 16: Confused -->
+        <item>&lt;3</item> <!-- 17: Heart -->
+        <item>x-(</item>   <!-- 18: Mad -->
+        <item>:-/</item>   <!-- 19: Smirk -->
+        <item>:-I</item>   <!-- 20: Poker face -->
     </string-array>
 
     <!-- NOTE: if you change anything about this array, you must make the corresponding change
-         to the array DEFAULT_SMILEY_RES_IDS in MessageListItem.java and to default_smiley_texts
+         to the array DEFAULT_SMILEY_RES_IDS in SmileyParser.java and to default_smiley_texts
          above. -->
     <string-array name="default_smiley_names">
         <item>Happy</item>                   <!-- 0: :-) -->
@@ -60,7 +64,12 @@
         <item>Lips are sealed</item>         <!-- 14: :-X -->
         <item>Laughing</item>                <!-- 15: :-D -->
         <item>Confused</item>                <!-- 16: o_O -->
+        <item>Heart</item>                   <!-- 17: <3 -->
+        <item>Mad</item>                     <!-- 18: x-( -->
+        <item>Smirk</item>                   <!-- 19: :-/ -->
+        <item>Poker face</item>              <!-- 20: :-I -->
     </string-array>
+
     <string-array name="pref_mms_user_agent_entries">
         <item>Default Android</item>
         <item>Nokia N95</item>
@@ -70,6 +79,7 @@
         <item>SoftBank X01T</item>
         <item>@string/pref_mms_custom_option</item>
     </string-array>
+
     <string-array name="pref_mms_user_agent_values" translatable="false">
         <item>default</item>
         <item>NokiaN95/11.0.026; Series60/3.1 Profile/MIDP-2.0 Configuration/CLDC-1.1</item>
@@ -79,6 +89,7 @@
         <item>SoftBank/1.0/X01T/SCJ001</item>
         <item>custom</item>
     </string-array>
+
     <string-array name="pref_mms_message_font_size_entries">
         <item>10</item>
         <item>12</item>
@@ -86,7 +97,7 @@
         <item>16</item>
         <item>18 (Default)</item>
         <item>20</item>
-  </string-array>
+    </string-array>
 
     <string-array translatable="false" name="pref_mms_message_font_size_values">
         <item>10</item>
@@ -95,53 +106,53 @@
         <item>16</item>
         <item>18</item>
         <item>20</item>
-  </string-array>
+    </string-array>
 
     <string-array name="pref_mms_notification_vibrate_pattern_entries">
-      <item>Normal</item>
-      <item>Medium Vibrate</item>
-      <item>Long Vibrate</item>
-      <item>Multiple Short</item>
-      <item>Multiple Long</item>
-      <item>@string/pref_mms_custom_option</item>
-   </string-array>
-    <string-array name="pref_mms_notification_vibrate_pattern_values" translatable="false">
-      <item></item>
-      <item>0,1200</item>
-      <item>0,2500</item>
-      <item>0,300,100,300,100,300,100,300,100,300</item>
-      <item>0,800,200,800,200,800</item>
-      <item>custom</item>
-   </string-array>
+        <item>Normal</item>
+        <item>Medium Vibrate</item>
+        <item>Long Vibrate</item>
+        <item>Multiple Short</item>
+        <item>Multiple Long</item>
+        <item>@string/pref_mms_custom_option</item>
+    </string-array>
 
-   <string-array name="pref_templates_gestures_sensitivity_entries">
-      <item>1 (broadest)</item>
-      <item>2</item>
-      <item>3</item>
-      <item>4</item>
-      <item>5</item>
-      <item>6</item>
-      <item>7</item>
-      <item>8</item>
-      <item>9</item>
-      <item>10</item>
-      <item>11</item>
-      <item>12 (strictest)</item>
+    <string-array name="pref_mms_notification_vibrate_pattern_values" translatable="false">
+        <item></item>
+        <item>0,1200</item>
+        <item>0,2500</item>
+        <item>0,300,100,300,100,300,100,300,100,300</item>
+        <item>0,800,200,800,200,800</item>
+        <item>custom</item>
+    </string-array>
+
+    <string-array name="pref_templates_gestures_sensitivity_entries">
+        <item>1 (broadest)</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12 (strictest)</item>
     </string-array>
 
     <string-array name="pref_templates_gestures_sensitivity_values" translatable="false">
-      <item>1</item>
-      <item>2</item>
-      <item>3</item>
-      <item>4</item>
-      <item>5</item>
-      <item>6</item>
-      <item>7</item>
-      <item>8</item>
-      <item>9</item>
-      <item>10</item>
-      <item>11</item>
-      <item>12</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
-
 </resources>
