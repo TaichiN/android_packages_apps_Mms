@@ -265,6 +265,9 @@ public class ComposeMessageActivity extends Activity
 
     private static final String EXIT_ECM_RESULT = "exit_ecm_result";
 
+    private static final String HIRAGANA = "\\u3040-\\u309F";
+    private static final String KATAKANA = "\\u30A0-\\u30FF";
+
     private static final int DIALOG_TEMPLATE_SELECT = 0;
     private static final int DIALOG_TEMPLATE_NOT_AVAILABLE = 1;
 
@@ -367,15 +370,16 @@ public class ComposeMessageActivity extends Activity
 
             for (int i = start; i < end; i++) {
                 char c = source.charAt(i);
-                String s = String.valueOf(c);
 
                 // Character is encodable by GSM, skip filtering
-                if (gsm.canEncode(c) || s.matches(".*[^\\x3040-\\x309F].*")) {
+                if (gsm.canEncode(c) || Character.toString(c).matches(
+                        "^[" + HIRAGANA + KATAKANA + "]+$")) {
                     output.append(c);
                 }
                 // Character requires Unicode, try to replace it
                 else {
                     unfiltered = false;
+                    String s = String.valueOf(c);
 
                     // Try normalizing the character into Unicode NFKD form and
                     // stripping out diacritic mark characters.
